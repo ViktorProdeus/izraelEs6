@@ -1,0 +1,477 @@
+.programs {
+  padding: 204px 0 51px;
+  margin: 0 auto;
+  max-width: 1566px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+
+    content: "";
+    width: 680px;
+    height: 426px;
+    top: 153px;
+    right: 0;
+
+    @include bg-image("../img/all/programs_bg@1x.png", contain);
+
+    @include retina {
+      background-image: url("../img/all/programs_bg@2x.png");
+    }
+  }
+
+  h2 {
+    margin-left: 100px;
+  }
+
+  &__inner {
+    margin: 65px 0 0 100px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &__list-wrapper {
+    margin: 0;
+    width: auto;
+    height: auto;
+
+    overflow: visible;
+  }
+
+  &__list-tabs {
+    display: block;
+    margin: 0 64px 0 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item-tab {
+    width: 228px;
+    min-height: 68px;
+    padding: 13px 30px 13px 20px;
+    // margin-bottom: 3px;
+
+    box-sizing: border-box;
+  }
+
+  &__item-tab--active {
+    position: relative;
+
+    @include bg-image("../img/svg/tab-arrow.svg", contain);
+
+    button {
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.07em;
+      line-height: 1.2;
+      text-transform: uppercase;
+
+      color: white;
+      text-shadow: $shadow--text;
+      cursor: auto;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &__item-tab--active &__btn {
+    &--general span::before,
+    &--general:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -10px -120px;
+    }
+
+    &--stady span::before,
+    &--stady:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -10px -10px;
+    }
+
+    &--internships span::before,
+    &--internships:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -174px -10px;
+    }
+
+    &--volunteering span::before,
+    &--volunteering:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -66px -65px;
+    }
+
+    &--religious span::before,
+    &--religious:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -10px -173px;
+    }
+  }
+
+  &__btn {
+    position: relative;
+
+    padding: 0;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+
+    font-family: $firasans;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.2;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    span {
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &:hover {
+      color: $yellow;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    & span::before {
+      display: block;
+
+      content: "";
+
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__btn--general {
+    min-width: 102px;
+
+    & span::before {
+      width: 28px;
+      height: 33px;
+      margin-left: 4px;
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -106px -120px;
+    }
+
+    &:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -58px -120px;
+    }
+  }
+
+  &__btn--stady {
+    min-width: 167px;
+
+    & span::before {
+      width: 36px;
+      height: 35px;
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -10px -65px;
+    }
+
+    &:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -66px -10px;
+    }
+
+    span {
+      margin-top: 7px;
+    }
+  }
+
+  &__btn--internships {
+    min-width: 136px;
+
+    & span::before {
+      margin: 0 0 0 2px;
+
+      width: 32px;
+      height: 25px;
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -174px -100px;
+    }
+
+    &:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -174px -55px;
+    }
+
+    span {
+      margin-top: 10px;
+    }
+  }
+
+  &__btn--volunteering {
+    min-width: 151px;
+
+    & span::before {
+      margin: 0 0 0 2px;
+
+      width: 32px;
+      height: 29px;
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -122px -59px;
+    }
+
+    &:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -122px -10px;
+    }
+
+    span {
+      margin-top: 12px;
+    }
+  }
+
+  &__btn--religious {
+    min-width: 146px;
+
+    & span::before {
+      margin: 0 0 0 6px;
+      width: 23px;
+      height: 25px;
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -96px -173px;
+    }
+
+    &:hover span::before {
+      background-image: url("../img/all/icons_sprite.png");
+      background-position: -53px -173px;
+    }
+
+    span {
+      margin-top: 12px;
+    }
+  }
+
+  &__scrollbar {
+    display: none;
+  }
+
+  &__list-content {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    width: 554px;
+  }
+
+  &__item-content {
+    display: none;
+
+    &--active {
+      display: block;
+      animation-name: zoomIn;
+      animation-duration: 0.4s;
+    }
+
+    h3 {
+      @include h3;
+
+      margin: 17px 0 24px;
+    }
+
+    p {
+      @include text-regular;
+      margin-bottom: 16px;
+
+      &:last-child {
+        max-width: 506px;
+      }
+    }
+  }
+
+  @media (max-width: $tablet--max) {
+    &::after {
+      position: absolute;
+      z-index: -1;
+
+      content: "";
+      width: 580px;
+      height: 326px;
+      top: 153px;
+      right: -50px;
+
+      @include bg-image("../img/mobile/programs_bg@1x.png", contain);
+
+      @include retina {
+        background-image: url("../img/mobile/programs_bg@2x.png");
+      }
+    }
+
+    &__list-tabs {
+      margin-right: 67px;
+    }
+
+    &__item-content {
+      h3 {
+        @include h3-mobile;
+      }
+
+      p {
+        @include text-regular-mobile;
+      }
+    }
+  }
+
+  @media (max-width: $mobile--max) {
+    padding: 85px 0 26px;
+
+    h2 {
+      margin: 0 0 4px;
+      text-align: center;
+    }
+
+    &__inner {
+      margin: 0;
+      flex-direction: column;
+    }
+
+    &__list-wrapper {
+      margin: 0 auto;
+      max-width: 100%;
+      min-height: 48px;
+      overflow: hidden;
+    }
+
+    &__list-tabs {
+      display: flex;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    &__item-tab {
+      padding: 0;
+      width: 182px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: content-box;
+
+      button {
+        padding: 8px 14px 7px;
+        width: 154px;
+        height: 35px;
+      }
+    }
+
+    &__btn {
+      opacity: 0.4;
+
+      span {
+        margin-top: 0;
+      }
+
+      &:hover {
+        opacity: 1;
+        color: $yellow;
+      }
+    }
+
+    &__item-tab--active {
+      background-image: none;
+      padding: 0;
+    }
+
+    &__item-tab--active &__btn {
+      opacity: 1;
+      border-radius: 40px;
+      background-image: $gradient--active;
+    }
+
+    &__item-tab &__btn--general {
+      margin-left: 50px;
+      width: 132px;
+    }
+
+    &__btn--stady {
+      min-width: 154px;
+
+      span {
+        margin-top: 0;
+      }
+    }
+
+    &__btn--internships {
+      &::before {
+        margin: 0;
+      }
+
+      span {
+        margin: 0;
+      }
+    }
+
+    &__btn--volunteering {
+      & span::before {
+        margin: 0;
+      }
+
+      span {
+        margin: 0;
+      }
+    }
+
+    &__btn--religious {
+      & span::before {
+        margin-top: 0;
+      }
+
+      span {
+        margin: 0 13px 0 0;
+      }
+    }
+
+    &__item-tab &__btn--internships {
+      width: 152px;
+    }
+
+    &__scrollbar {
+      display: block;
+    }
+
+    &__list-content {
+      width: auto;
+    }
+
+    &__item-content {
+      h3 {
+        margin-top: 23px;
+        margin-bottom: 15px;
+      }
+
+      p {
+        min-width: 90%;
+        margin: 0 3px 12px 0;
+      }
+    }
+  }
+}
+
+// animation for tabs
+//-----------------------
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

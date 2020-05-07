@@ -1,0 +1,64 @@
+
+// Color
+//---------------------------------
+
+$black:                           #484848 !default;
+$social-color:        rgba(#000000, 0.16) !default;
+$white-focus:                     #f4f4f4 !default;
+$blue:                            #1fc0fc !default;
+$blue-hover:                      #63d3fd !default;
+$yellow:                          #ffc341 !default;
+$yellow--lighten:                 #ffd701 !default;
+$popup-color:                     #ebebeb !default;
+$error-color:                     #ff0000 !default;
+$default-color:                   #e3e3e3 !default;
+$promo-bg-color:                  #ffe3d9 !default;
+$correct-color:                    $black;
+
+// gradient
+//---------------------------------
+
+$gradient:                         linear-gradient(108.42deg, $yellow 20.46%, $yellow--lighten 65.31%);
+$gradient--active:                 linear-gradient(108.42deg, $yellow 20.46%, $yellow--lighten 65.31%);
+$gradient--hover:                  linear-gradient(143.55deg, $yellow -50.3%, $yellow--lighten 63.1%);
+$gradient--click:                  radial-gradient(150% 119.49% at 50% 50.85%, rgba(0, 0, 0, 0) 30.67%, rgba(3, 3, 3, 0.24) 100%), linear-gradient(143.55deg, $yellow -50.3%, $yellow--lighten 63.1%);
+
+
+// Typography
+//---------------------------------
+
+$font-family--sansSerif:           "Arial", sans-serif !default;
+
+//fonts
+
+$firasans:                         "Firasans", $font-family--sansSerif;
+$raleway:                          "Raleway", $font-family--sansSerif;
+$montserrat:                       "Montserrat", $font-family--sansSerif;
+
+// shadow
+//---------------------------------
+
+$shadow--text:                      0 1px 4px rgba(#000000, 0.12);
+$shadow--icon:                      0 1px 4px rgba(#000000, 0.05);
+$shadow--bubble:                    0 3px 12px rgba(#000000, 0.1);
+
+// Media queries
+//---------------------------------
+
+$mobile--only:                       320px !default;
+$mobile--max:                        767px !default;
+$tablet--max:                       1023px !default;
+$desktop--min:                      1024px !default;
+$desktop--max:                      1366px !default;
+
+// retina
+//---------------------------------
+
+$retina-dpi:                        144dpi;
+$retina-dppx:                       1.5dppx;
+
+// animation
+//---------------------------------
+
+$animate:                          0.2s linear;
+$animate--arrow:                   0.4s linear;

@@ -1,0 +1,280 @@
+.how {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 auto;
+  max-width: 1566px;
+  padding-bottom: 150px;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+
+    content: "";
+    width: 100%;
+    min-height: 1208px;
+    transform: translateY(-60px);
+
+    @include bg-image("../img/all/how__bg@1x.png", contain);
+    background-size: 100%;
+
+    @include retina {
+      background-image: url("../img/all/how__bg@2x.png");
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__inner {
+    padding: 174px 0 0;
+    width: 48.3%;
+
+    h2 {
+      margin-bottom: 22px;
+    }
+
+    p {
+      margin-bottom: 32px;
+      max-width: 480px;
+
+      @include text-regular;
+    }
+
+    h3 {
+      margin: 0 0 25px;
+      max-width: 450px;
+
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    span {
+      position: relative;
+
+      display: block;
+      margin-left: -3px;
+      padding: 2px 0 0 15px;
+
+      color: rgba($black, 0.5);
+
+      border-left: 4px solid transparent;
+      border-image: url("../img/svg/left-border-solid.svg") 1 / 4px round;
+      border-image-width: 0 0 0 4px;
+    }
+  }
+
+  &__list {
+    margin: 0 0 47px;
+    padding: 0;
+
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 85%;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      border-left: 1px solid transparent;
+      border-image: url("../img/svg/left-border-dashed.svg") 1 / 2px round;
+      border-image-width: 0 0 0 2px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    min-height: 36px;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 0 39px -17px;
+
+    &:first-child,
+    &:last-child {
+      position: relative;
+      z-index: 1;
+
+      &::after {
+        position: absolute;
+        z-index: -1;
+
+        content: "";
+        width: 10px;
+        height: 50%;
+        left: 10px;
+
+        background-color: white;
+      }
+    }
+
+    &:first-child::after {
+      top: 0;
+    }
+
+    &:last-child::after {
+      bottom: 0;
+    }
+
+    &::before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin: 0;
+
+      content: attr(data-item);
+      width: 36px;
+      height: 36px;
+      padding: 5px;
+
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.7;
+      color: $yellow;
+
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: $shadow--bubble;
+    }
+
+    p {
+      margin: 0 0 0 24px;
+      max-width: 450px;
+
+      @include text-regular-lh;
+    }
+  }
+
+  @media (max-width: $tablet--max) {
+    &::before {
+      min-height: 950px;
+      transform: translateY(-100px);
+
+      width: 100%;
+
+
+      @include bg-image("../img/all/how__bg@1x.png", contain);
+
+      background-size: 100%;
+
+      @include retina {
+        background-image: url("../img/all/how__bg@2x.png");
+      }
+    }
+
+    &__inner {
+      padding: 70px 0 0;
+
+      h2 {
+        margin-bottom: 22px;
+
+        @include h2-mobile;
+      }
+
+      p {
+        margin-bottom: 24px;
+
+        @include text-regular-mobile;
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      span {
+        @include text-regular-mobile;
+      }
+    }
+
+    &__list {
+      margin: 0 0 40px;
+      padding: 0;
+
+      p {
+        @include text-regular-mobile;
+      }
+    }
+
+    &__item {
+      margin-bottom: 30px;
+
+      p {
+        margin: 0 0 0 17px;
+      }
+    }
+  }
+
+  @media (max-width: $mobile--max) {
+    padding-bottom: 0;
+
+    &::before {
+      width: 100%;
+      transform: translateY(0);
+
+      @include bg-image("../img/mobile/stamp@1x.png", contain);
+
+      background-size: 216px 199px;
+      background-position: 100% 47.5%;
+
+      @include retina {
+        background-image: url("../img/mobile/stamp@2x.png");
+      }
+    }
+
+    &__inner {
+      padding: 0;
+      width: 100%;
+
+      h2 {
+        padding-top: 85px;
+        margin-bottom: 22px;
+        text-align: center;
+
+        @include h2-mobile;
+      }
+
+      p {
+        margin-bottom: 22px;
+        max-width: 100%;
+
+        @include text-regular-mobile;
+      }
+
+      h3 {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      span {
+        margin-left: -6px;
+        padding: 2px 0 0 10px;
+      }
+    }
+
+    &__list {
+      margin: 0 0 20px 8px;
+    }
+
+    &__item {
+      margin: 0 0 38px -17px;
+
+      p {
+        margin: 0 0 0 17px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

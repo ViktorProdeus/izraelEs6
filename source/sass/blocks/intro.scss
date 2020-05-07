@@ -1,0 +1,100 @@
+.intro {
+  margin: 0 auto;
+  max-width: 1566px;
+  width: 100%;
+  min-height: 908px;
+  background-color: #e5e7ea;
+
+  @include bg-image("../img/all/intro__bg@1x.jpg", cover);
+
+  p {
+    margin: 472px auto 0;
+    transform: translateX(3px);
+    max-width: 345px;
+
+    @include text-promo;
+    text-shadow: $shadow--text;
+  }
+
+  &__button {
+    position: relative;
+    margin: 57px auto 0;
+    transform: translateX(3px);
+
+    display: block;
+    width: 17px;
+    height: 26px;
+    border: none;
+    background-color: transparent;
+
+    @include bg-image("../img/all/mouse.png", contain);
+    background-position: 0 0;
+
+    cursor: pointer;
+
+    &:hover::before,
+    &:focus::before {
+      background-image: url("../img/svg/mouse-button-stroke--hover.svg");
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::before {
+      position: absolute;
+      z-index: 1;
+
+      content: "";
+      top: -26px;
+      left: -29px;
+
+      width: 76px;
+      height: 132px;
+
+      background-image: url("../img/svg/mouse-button-stroke.svg");
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      transition: background-image $animate;
+    }
+  }
+
+  @include retina {
+    background-image: url("../img/all/intro__bg@2x.jpg");
+  }
+
+  @media (max-width: $tablet--max) {
+    min-height: 680px;
+
+    p {
+      margin-top: 280px;
+
+      @include text-promo-mobile;
+    }
+  }
+
+  @media (max-width: $mobile--max) {
+    min-height: 617px;
+
+    @include bg-image("../img/mobile/intro__bg@1x.jpg", cover);
+
+    @include retina {
+      background-image: url("../img/mobile/intro__bg@2x.jpg");
+    }
+
+    p {
+      margin-top: 268px;
+      transform: translateX(0);
+    }
+
+    &__button {
+      transform: translateX(0);
+
+      &::before {
+        top: -26px;
+        left: -30px;
+      }
+    }
+  }
+}
