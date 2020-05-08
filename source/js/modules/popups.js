@@ -49,7 +49,7 @@ const showElements = function (buttons, popup) {
   const inputName = document.querySelector(`.form-js [name=popup-name]`);
   const inputphone = document.querySelector(`.form-js [name=popup-phone]`);
 
-  buttons.forEach(function (i) {
+  Array.prototype.forEach.call(buttons, function (i) {
     i.addEventListener(`click`, function (evt) {
       evt.preventDefault();
 
@@ -64,7 +64,7 @@ const showElements = function (buttons, popup) {
 };
 
 const hideElements = function (buttons, popup) {
-  buttons.forEach(function (i) {
+  Array.prototype.forEach.call(buttons, function (i) {
     i.addEventListener(`click`, function (evt) {
       evt.preventDefault();
 
@@ -78,7 +78,7 @@ const hideElements = function (buttons, popup) {
 window.addEventListener(`keydown`, function (evt) {
   if (evt.keyCode === 27) {
     evt.preventDefault();
-    popups.forEach(function (element) {
+    Array.prototype.forEach.call(popups, function (element) {
 
       if (element.classList.contains(`popup--show`)) {
 
@@ -89,7 +89,7 @@ window.addEventListener(`keydown`, function (evt) {
   }
 });
 
-popupWrappers.forEach(function (element) {
+Array.prototype.forEach.call(popupWrappers, function (element) {
   element.addEventListener(`mousedown`, function (evt) {
     if (evt.target === element && evt.which === 1 || evt.target === buttonPopup) {
 

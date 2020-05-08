@@ -1,11 +1,11 @@
 const removeClass = (elem, className) => {
-  elem.forEach((i) => {
+  Array.prototype.forEach.call(elem, function (i) {
     i.classList.remove(className);
   });
 };
 
 const activateAccordion = (tabs, activeTab) => {
-  tabs.forEach(function (tab) {
+  Array.prototype.forEach.call(tabs, function (tab) {
     tab.addEventListener(`click`, function (evt) {
       evt.preventDefault();
 
@@ -24,7 +24,7 @@ const activateAccordion = (tabs, activeTab) => {
 };
 
 const activateTabs = (tabs, activeTab, itemsContent, activeClass) => {
-  tabs.forEach(function (tab, i) {
+  Array.prototype.forEach.call(tabs, function (tab, i) {
     tab.addEventListener(`click`, function (evt) {
       evt.preventDefault();
 

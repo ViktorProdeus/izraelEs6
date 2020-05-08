@@ -25,8 +25,8 @@ const mainWebpackConfig = {
     rules: [
       {
         test: /\.js$/,
-        loader: `babel-loader`,
         exclude: `/node_modules/`,
+        loader: `babel-loader`,
         options: {
           presets: [[`@babel/preset-env`, {
             "targets": `> 0.25%, not dead`
@@ -47,8 +47,8 @@ const vendorWebpackConfig = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: `/node_modules/`,
         loader: `babel-loader`,
+        exclude: `/node_modules/`,
         options: {
           presets: [`@babel/preset-env`]
         }
