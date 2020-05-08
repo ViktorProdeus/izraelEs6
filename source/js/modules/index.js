@@ -49,7 +49,7 @@ window.addEventListener(`load`, () => {
 
   if (submitBtns) {
 
-    Array.prototype.forEach.call(submitBtns, function (el) {
+    submitBtns.forEach(function (el) {
       let btn = el;
 
       btn.addEventListener(`click`, function (evt) {

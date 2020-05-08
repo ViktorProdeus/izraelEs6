@@ -11,7 +11,7 @@ const inputFeedbackPhone = document.querySelector(`.contacts__feedback-phone inp
 
 
 const inputsSuccessHandler = function () {
-  Array.prototype.forEach.call(phoneInputs, function (i) {
+  phoneInputs.forEach(function (i) {
     if (i.value.length === 16) {
       i.classList.add(`correct`);
     } else {
@@ -19,7 +19,7 @@ const inputsSuccessHandler = function () {
     }
   });
 
-  Array.prototype.forEach.call(nameInputs, function (i) {
+  nameInputs.forEach(function (i) {
     if (i.value.length > 0) {
       i.classList.add(`correct`);
     } else {
@@ -46,7 +46,7 @@ if (inputFeedbackPhone) {
   }
 }
 
-Array.prototype.forEach.call(inputs, function (i) {
+inputs.forEach(function (i) {
   i.addEventListener(`input`, inputsSuccessHandler);
 });
 
@@ -69,11 +69,11 @@ const checkboxChangeHandler = function () {
 const addInputsListener = function () {
   checkbox.addEventListener(`change`, checkboxChangeHandler);
 
-  Array.prototype.forEach.call(nameInputs, function (i) {
+  nameInputs.forEach(function (i) {
     i.addEventListener(`input`, nameInputsChangeHandler);
   });
 
-  Array.prototype.forEach.call(phoneInputs, function (i) {
+  phoneInputs.forEach(function (i) {
     i.addEventListener(`input`, phoneInputsChangeHandler);
   });
 };
@@ -155,63 +155,3 @@ export {
   showSuccessMessages,
   checkbox
 };
-
-// if (submitBtns) {
-//   Array.prototype.forEach.call(submitBtns, function (el) {
-//     let btn = el;
-
-//     btn.addEventListener(`click`, function (evt) {
-//       evt.preventDefault();
-//       addInputsListener();
-
-//       const parent = returnParent(evt.target, `form-js`);
-//       const phoneInput = parent.querySelector(`input[type=tel]`);
-//       const textInput = parent.querySelector(`input[type=text]`);
-//       const checkboxInput = parent.querySelector(`input[type=checkbox]`);
-//       const form = parent.querySelector(`form`);
-
-//       if (!textInput) {
-//         checkPhoneInputValidity(phoneInput);
-
-//         if (checkPhoneInputsValidity(phoneInput)) {
-//           setTimeout(function () {
-//             form.reset();
-//             phoneInput.classList.remove(`correct`);
-//             showSuccessMessages();
-//           }, 500);
-//         }
-
-//       } else if (!checkboxInput) {
-//         checkPhoneInputValidity(phoneInput);
-//         checkNameInputValidity(textInput);
-
-//         if (checkNameInputsValidity(textInput) && checkPhoneInputsValidity(phoneInput)) {
-//           setTimeout(function () {
-//             form.reset();
-
-//             phoneInput.classList.remove(`correct`);
-//             textInput.classList.remove(`correct`);
-
-//             borderPhone.classList.remove(`contacts__phone-border--show`);
-
-//             showSuccessMessages();
-//           }, 500);
-//         }
-
-//       } else {
-//         checkBoxValidate(checkbox);
-//         checkPhoneInputValidity(phoneInput);
-//         checkNameInputValidity(textInput);
-
-//         if (checkNameInputsValidity(textInput) && checkPhoneInputsValidity(phoneInput) && checkBoxValidity(checkbox)) {
-//           setTimeout(function () {
-//             form.reset();
-//             phoneInput.classList.remove(`correct`);
-//             textInput.classList.remove(`correct`);
-//             showSuccessMessages();
-//           }, 500);
-//         }
-//       }
-//     });
-//   });
-// }
