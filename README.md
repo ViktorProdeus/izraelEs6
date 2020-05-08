@@ -1,7 +1,7 @@
 # Проект Акселератора «Израиль»
 # ![Image of project «Израиль»](https://github.com/ViktorProdeus/israelEs6/blob/master/izrael.jpg)
 
-* Вёрстка макета: [Посмотреть](https://github.com/ViktorProdeus/izraelEs6/build).  
+* Вёрстка макета: [Посмотреть](https://viktorprodeus.github.io/izraelEs6/build).  
 * Исполнитель: [Виктор Продеус](https://up.htmlacademy.ru/adaptive/16/user/814599).
 ---
 
