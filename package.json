@@ -28,7 +28,6 @@
     "posthtml-include": "^1.4.3",
     "stylelint": "13.3.x",
     "stylelint-config-htmlacademy": "0.1.x",
-    "webpack": "^4.43.0",
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
@@ -57,9 +56,6 @@
     "node": "8.15"
   },
   "dependencies": {
-    "del": "^5.1.0",
-    "imask": "^6.0.3",
-    "moveto": "^1.8.2",
-    "swiper": "^5.3.8"
+    "del": "^5.1.0"
   }
 }

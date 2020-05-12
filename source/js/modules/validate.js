@@ -11,7 +11,7 @@ const inputFeedbackPhone = document.querySelector(`.contacts__feedback-phone inp
 
 
 const inputsSuccessHandler = function () {
-  Array.prototype.forEach.call(phoneInputs, function (i) {
+  phoneInputs.forEach(function (i) {
     if (i.value.length === 16) {
       i.classList.add(`correct`);
     } else {
@@ -19,7 +19,7 @@ const inputsSuccessHandler = function () {
     }
   });
 
-  Array.prototype.forEach.call(nameInputs, function (i) {
+  nameInputs.forEach(function (i) {
     if (i.value.length > 0) {
       i.classList.add(`correct`);
     } else {
@@ -46,7 +46,7 @@ if (inputFeedbackPhone) {
   }
 }
 
-Array.prototype.forEach.call(inputs, function (i) {
+inputs.forEach(function (i) {
   i.addEventListener(`input`, inputsSuccessHandler);
 });
 
@@ -69,11 +69,11 @@ const checkboxChangeHandler = function () {
 const addInputsListener = function () {
   checkbox.addEventListener(`change`, checkboxChangeHandler);
 
-  Array.prototype.forEach.call(nameInputs, function (i) {
+  nameInputs.forEach(function (i) {
     i.addEventListener(`input`, nameInputsChangeHandler);
   });
 
-  Array.prototype.forEach.call(phoneInputs, function (i) {
+  phoneInputs.forEach(function (i) {
     i.addEventListener(`input`, phoneInputsChangeHandler);
   });
 };

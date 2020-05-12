@@ -1,6 +1,21 @@
-import {popupOrder, popupSuccess, submitBtns} from './const';
-import {activateTabs, activateAccordion} from './utils';
-import {showElements, hideElements, buttonsOrder, buttonsClose} from './popups';
+import {
+  popupOrder,
+  popupSuccess,
+  submitBtns
+} from './modules/const';
+
+import {
+  activateTabs,
+  activateAccordion
+} from './modules/utilsForModules';
+
+import {
+  showElements,
+  hideElements,
+  buttonsOrder,
+  buttonsClose
+} from './modules/popups';
+
 import {
   borderPhone,
   addInputsListener,
@@ -13,9 +28,11 @@ import {
   returnParent,
   showSuccessMessages,
   checkbox
-} from './validate';
+} from './modules/validate';
 
+import {forEachPolyfill} from './utils/polyfill-foreach';
 
+forEachPolyfill();
 
 window.addEventListener(`load`, () => {
   const programsBlock = document.querySelectorAll(`.programs`);
@@ -49,7 +66,7 @@ window.addEventListener(`load`, () => {
 
   if (submitBtns) {
 
-    Array.prototype.forEach.call(submitBtns, function (el) {
+    submitBtns.forEach(function (el) {
       let btn = el;
 
       btn.addEventListener(`click`, function (evt) {
@@ -62,15 +79,32 @@ window.addEventListener(`load`, () => {
         const checkboxInput = parent.querySelector(`input[type=checkbox]`);
         const form = parent.querySelector(`form`);
 
+        const clearFirstForm = () => {
+          form.reset();
+          phoneInput.classList.remove(`correct`);
+          showSuccessMessages();
+        };
+
+        const clearSecondForm = () => {
+          form.reset();
+          phoneInput.classList.remove(`correct`);
+          textInput.classList.remove(`correct`);
+          borderPhone.classList.remove(`contacts__phone-border--show`);
+          showSuccessMessages();
+        };
+
+        const clearThirdForm = () => {
+          form.reset();
+          phoneInput.classList.remove(`correct`);
+          textInput.classList.remove(`correct`);
+          showSuccessMessages();
+        };
+
         if (!textInput) {
           checkPhoneInputValidity(phoneInput);
 
           if (checkPhoneInputsValidity(phoneInput)) {
-            setTimeout(function () {
-              form.reset();
-              phoneInput.classList.remove(`correct`);
-              showSuccessMessages();
-            }, 500);
+            setTimeout(clearFirstForm, 500);
           }
 
         } else if (!checkboxInput) {
@@ -78,16 +112,7 @@ window.addEventListener(`load`, () => {
           checkNameInputValidity(textInput);
 
           if (checkNameInputsValidity(textInput) && checkPhoneInputsValidity(phoneInput)) {
-            setTimeout(function () {
-              form.reset();
-
-              phoneInput.classList.remove(`correct`);
-              textInput.classList.remove(`correct`);
-
-              borderPhone.classList.remove(`contacts__phone-border--show`);
-
-              showSuccessMessages();
-            }, 500);
+            setTimeout(clearSecondForm, 500);
           }
 
         } else {
@@ -96,12 +121,7 @@ window.addEventListener(`load`, () => {
           checkNameInputValidity(textInput);
 
           if (checkNameInputsValidity(textInput) && checkPhoneInputsValidity(phoneInput) && checkBoxValidity(checkbox)) {
-            setTimeout(function () {
-              form.reset();
-              phoneInput.classList.remove(`correct`);
-              textInput.classList.remove(`correct`);
-              showSuccessMessages();
-            }, 500);
+            setTimeout(clearThirdForm, 500);
           }
         }
       });

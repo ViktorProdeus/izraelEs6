@@ -14,66 +14,74 @@ const posthtml = require(`gulp-posthtml`);
 const include = require(`posthtml-include`);
 const del = require(`del`);
 const webpack = require(`webpack-stream`);
+const webpackConfig = require(`./webpack.config.js`);
 
-let isDev = true;
-
-const mainWebpackConfig = {
-  output: {
-    filename: `index.js`
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: `/node_modules/`,
-        loader: `babel-loader`,
-        options: {
-          presets: [[`@babel/preset-env`, {
-            "targets": `> 0.25%, not dead`
-          }]]
-        }
-      }
-    ]
-  },
-  mode: isDev ? `development` : `production`,
-  devtool: isDev ? `eval-sourse-map` : `none`
-};
-
-const vendorWebpackConfig = {
-  output: {
-    filename: `index.js`
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        loader: `babel-loader`,
-        exclude: `/node_modules/`,
-        options: {
-          presets: [`@babel/preset-env`]
-        }
-      }
-    ]
-  },
-  mode: isDev ? `development` : `production`,
-  devtool: isDev ? `eval-sourse-map` : `none`
-};
-
-gulp.task(`main`, function () {
-  return gulp
-      .src(`source/js/modules/index.js`)
-      .pipe(webpack(mainWebpackConfig))
-      .pipe(rename(`main.js`))
-      .pipe(gulp.dest(`build/js/`));
+gulp.task(`js`, function () {
+  return gulp.src([`source/js/main.js`])
+      .pipe(webpack(webpackConfig))
+      // .pipe(uglify())
+      .pipe(gulp.dest(`build/js`));
 });
 
-gulp.task(`vendor`, function () {
-  return gulp
-      .src(`source/js/vendor/index.js`)
-      .pipe(webpack(vendorWebpackConfig))
-      .pipe(rename(`vendor.js`))
-      .pipe(gulp.dest(`build/js/`));
-});
+// let isDev = true;
+
+// const mainWebpackConfig = {
+//   output: {
+//     filename: `index.js`
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.js$/,
+//         exclude: `/node_modules/`,
+//         loader: `babel-loader`,
+//         options: {
+//           presets: [[`@babel/preset-env`, {
+//             "targets": `> 0.25%, not dead`
+//           }]]
+//         }
+//       }
+//     ]
+//   },
+//   mode: isDev ? `development` : `production`,
+//   devtool: isDev ? `eval-sourse-map` : `none`
+// };
+
+// const vendorWebpackConfig = {
+//   output: {
+//     filename: `index.js`
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.jsx?$/,
+//         loader: `babel-loader`,
+//         exclude: `/node_modules/`,
+//         options: {
+//           presets: [`@babel/preset-env`]
+//         }
+//       }
+//     ]
+//   },
+//   mode: isDev ? `development` : `production`,
+//   devtool: isDev ? `eval-sourse-map` : `none`
+// };
+
+// gulp.task(`main`, function () {
+//   return gulp
+//       .src(`source/js/modules/index.js`)
+//       .pipe(webpack(mainWebpackConfig))
+//       .pipe(rename(`main.js`))
+//       .pipe(gulp.dest(`build/js/`));
+// });
+
+// gulp.task(`vendor`, function () {
+//   return gulp
+//       .src(`source/js/vendor/index.js`)
+//       .pipe(webpack(vendorWebpackConfig))
+//       .pipe(rename(`vendor.js`))
+//       .pipe(gulp.dest(`build/js/`));
+// });
 
 gulp.task(`css`, function () {
   return gulp.src(`source/sass/style.scss`)
@@ -103,11 +111,12 @@ gulp.task(`server`, function () {
     ui: false
   });
 
-  gulp.watch(`source/js/modules/index.js`, gulp.series(`main`, `refresh`));
-  gulp.watch(`source/js/vendor/index.js`, gulp.series(`vendor`, `refresh`));
+  // gulp.watch(`source/js/modules/index.js`, gulp.series(`main`, `refresh`));
+  // gulp.watch(`source/js/vendor/index.js`, gulp.series(`vendor`, `refresh`));
   gulp.watch(`source/sass/**/*.{scss,sass}`, gulp.series(`css`));
   gulp.watch(`source/img/icon-*.svg`, gulp.series(`sprite`, `html`, `refresh`));
   gulp.watch(`source/*.html`, gulp.series(`html`, `refresh`));
+  gulp.watch(`source/js/**/*.js`, gulp.series(`js`, `refresh`));
 });
 
 gulp.task(`refresh`, function (done) {
@@ -121,10 +130,16 @@ gulp.task(`images`, function () {
       imagemin.optipng({
         optimizationLevel: 3
       }),
-      imagemin.jpegtran({
-        progressive: true
+      imagemin.mozjpeg({
+        quality: 75, progressive: true
       }),
-      imagemin.svgo()
+      imagemin.svgo({
+        plugins: [
+          {removeViewBox: false},
+          {removeRasterImages: true},
+          {removeUselessStrokeAndFill: false},
+        ]
+      })
     ]))
 
     .pipe(gulp.dest(`source/img`));
@@ -174,7 +189,7 @@ gulp.task(`clean`, function () {
 
 gulp.task(
   `build`,
-  gulp.series(`clean`, `copy`, `css`, `sprite`, `main`, `vendor`, `html`)
+  gulp.series(`clean`, `copy`, `css`, `sprite`, `js`, `html`)
 );
 
 gulp.task(`start`, gulp.series(`build`, `server`));

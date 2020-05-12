@@ -1,6 +1,9 @@
-import Swiper from 'swiper';
-import IMask from 'imask';
-import MoveTo from 'moveTo';
+import './vendor/swiper';
+import './vendor/move-to';
+import './vendor/iMask';
+import {forEachPolyfill} from './utils/polyfill-foreach';
+
+forEachPolyfill();
 
 window.addEventListener(`load`, () => {
 
@@ -30,6 +33,7 @@ window.addEventListener(`load`, () => {
     const enableSwiper = function () {
 
 
+      // eslint-disable-next-line no-undef
       mySwiper = new Swiper(tabsContainerBlock, {
 
         slidesPerView: `auto`,
@@ -71,6 +75,7 @@ window.addEventListener(`load`, () => {
     };
 
     const enableSwiper = function () {
+      // eslint-disable-next-line no-undef
       mySwiper = new Swiper(izraelSliderBlock, {
 
         loop: true,
@@ -104,6 +109,7 @@ window.addEventListener(`load`, () => {
 
   if (reviewsSliderBlock) {
 
+    // eslint-disable-next-line no-undef
     const reviewsSlider = new Swiper(reviewsSliderBlock, {
       loop: true,
       autoHeight: true,
@@ -122,31 +128,25 @@ window.addEventListener(`load`, () => {
   }
 
 
-  const phoneInputWant = document.querySelector(`.want input`);
+  const phoneInputs = document.querySelectorAll(`.want input, .popup__phone input, .contacts__feedback-phone input`);
 
-  if (phoneInputWant) {
-    const wantPhoneMask = new IMask(phoneInputWant, {
-      mask: `+{7}(000)000-00-00`,
-    });
-  }
+  const validatePhone = () => {
+    if (phoneInputs.length) {
+      phoneInputs.forEach((el) => {
+        const input = el;
+        // eslint-disable-next-line no-undef
+        return new IMask(input, {
+          mask: `+{7}(000)000-00-00`
+        });
+      });
+    }
+  };
 
-  const phoneInputPopup = document.querySelector(`.popup__phone input`);
+  validatePhone();
 
-  if (phoneInputPopup) {
-    const popupPhoneMask = new IMask(phoneInputPopup, {
-      mask: `+{7}(000)000-00-00`,
-    });
-  }
-
-  const phoneInputContacts = document.querySelector(`.contacts__feedback-phone input`);
-
-  if (phoneInputContacts) {
-    const contactsPhoneMask = new IMask(phoneInputContacts, {
-      mask: `+{7}(000)000-00-00`,
-    });
-  }
 
   // moveTo
+  // eslint-disable-next-line no-undef
   const moveTo = new MoveTo();
 
   const mouseButton = document.querySelector(`.intro__button`);
