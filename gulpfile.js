@@ -18,70 +18,9 @@ const webpackConfig = require(`./webpack.config.js`);
 
 gulp.task(`js`, function () {
   return gulp.src([`source/js/main.js`])
-      .pipe(webpack(webpackConfig))
-      // .pipe(uglify())
-      .pipe(gulp.dest(`build/js`));
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest(`build/js`));
 });
-
-// let isDev = true;
-
-// const mainWebpackConfig = {
-//   output: {
-//     filename: `index.js`
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.js$/,
-//         exclude: `/node_modules/`,
-//         loader: `babel-loader`,
-//         options: {
-//           presets: [[`@babel/preset-env`, {
-//             "targets": `> 0.25%, not dead`
-//           }]]
-//         }
-//       }
-//     ]
-//   },
-//   mode: isDev ? `development` : `production`,
-//   devtool: isDev ? `eval-sourse-map` : `none`
-// };
-
-// const vendorWebpackConfig = {
-//   output: {
-//     filename: `index.js`
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.jsx?$/,
-//         loader: `babel-loader`,
-//         exclude: `/node_modules/`,
-//         options: {
-//           presets: [`@babel/preset-env`]
-//         }
-//       }
-//     ]
-//   },
-//   mode: isDev ? `development` : `production`,
-//   devtool: isDev ? `eval-sourse-map` : `none`
-// };
-
-// gulp.task(`main`, function () {
-//   return gulp
-//       .src(`source/js/modules/index.js`)
-//       .pipe(webpack(mainWebpackConfig))
-//       .pipe(rename(`main.js`))
-//       .pipe(gulp.dest(`build/js/`));
-// });
-
-// gulp.task(`vendor`, function () {
-//   return gulp
-//       .src(`source/js/vendor/index.js`)
-//       .pipe(webpack(vendorWebpackConfig))
-//       .pipe(rename(`vendor.js`))
-//       .pipe(gulp.dest(`build/js/`));
-// });
 
 gulp.task(`css`, function () {
   return gulp.src(`source/sass/style.scss`)
@@ -111,8 +50,6 @@ gulp.task(`server`, function () {
     ui: false
   });
 
-  // gulp.watch(`source/js/modules/index.js`, gulp.series(`main`, `refresh`));
-  // gulp.watch(`source/js/vendor/index.js`, gulp.series(`vendor`, `refresh`));
   gulp.watch(`source/sass/**/*.{scss,sass}`, gulp.series(`css`));
   gulp.watch(`source/img/icon-*.svg`, gulp.series(`sprite`, `html`, `refresh`));
   gulp.watch(`source/*.html`, gulp.series(`html`, `refresh`));
